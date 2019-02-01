@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const port = 3000;
 
-const randomQuoteRouter = require('./routes/random_quote');
+const randomQuoteRouter = require('./src/routes/random_quote');
 
 app.use('/', randomQuoteRouter);
 
