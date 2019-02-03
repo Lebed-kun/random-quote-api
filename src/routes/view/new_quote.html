@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Send quote</title>
+  </head>
+  <body>
+    <span>Quote text: </span>
+    <textarea id="quote"></textarea>
+    <span>Author: </span>
+    <input type="text" id="author">
+    <input type="submit" id="send-quote">
+  </body>
+
+  <script type="text/javascript">
+    var submitButton = document.getElementById('send-quote');
+
+    submitButton.addEventListener('click', () => {
+      var data = {
+        quote : document.getElementById('quote').value,
+        author : document.getElementById('author').value
+      }
+
+      fetch('/add-quote', {
+          method : 'post',
+          headers : { 'Content-type': 'application/json' },
+          body : JSON.stringify(data)
+      });
+    });
+  </script>
+</html>

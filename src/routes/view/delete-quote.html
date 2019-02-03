@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Delete quote</title>
+  </head>
+  <body>
+    <span>id: </span>
+    <input type="text" id="quote-id">
+    <input type="submit" id="delete-quote">
+  </body>
+
+  <script type="text/javascript">
+    var deleteQuoteButton = document.getElementById('delete-quote');
+
+    deleteQuoteButton.addEventListener('click', () => {
+      var quoteId = document.getElementById('quote-id').value;
+
+      fetch('/delete', {
+        method : 'delete',
+        headers: {'Content-Type': 'application/json'},
+        body : JSON.stringify({ id : quoteId })
+      })
+    })
+  </script>
+</html>
